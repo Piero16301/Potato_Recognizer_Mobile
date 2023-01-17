@@ -1,0 +1,7 @@
+name: potato_recognizer
+
+on: [pull_request, push]
+
+jobs:
+  semantic-pull-request:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
