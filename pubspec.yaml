@@ -9,12 +9,18 @@ environment:
 
 dependencies:
   bloc: ^8.1.0
+  camera: ^0.10.1
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
+  google_ml_kit: ^0.13.0
+  image_picker: ^0.8.6
   intl: ^0.17.0
+  path: ^1.8.2
+  path_provider: ^2.0.11
 
 dev_dependencies:
   bloc_test: ^9.1.0
@@ -26,3 +32,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+  - assets/
