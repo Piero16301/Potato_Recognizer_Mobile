@@ -47,7 +47,7 @@ class _CameraViewState extends State<CameraView> {
   double minZoomLevel = 0;
   double maxZoomLevel = 0;
 
-  final bool _allowPicker = true;
+  final bool _allowPicker = false;
 
   bool _changingCameraLens = false;
 
@@ -96,10 +96,11 @@ class _CameraViewState extends State<CameraView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
         actions: [
           if (_allowPicker)
             Padding(
-              padding: EdgeInsets.only(right: 20.0),
+              padding: const EdgeInsets.only(right: 20),
               child: GestureDetector(
                 onTap: _switchScreenMode,
                 child: Icon(
@@ -114,8 +115,8 @@ class _CameraViewState extends State<CameraView> {
         ],
       ),
       body: _body(),
-      floatingActionButton: _floatingActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: _floatingActionButton(),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
@@ -175,26 +176,29 @@ class _CameraViewState extends State<CameraView> {
             ),
           ),
           if (widget.customPaint != null) widget.customPaint!,
-          Positioned(
-            bottom: 100,
-            left: 50,
-            right: 50,
-            child: Slider(
-              value: zoomLevel,
-              min: minZoomLevel,
-              max: maxZoomLevel,
-              onChanged: (value) {
-                setState(() {
-                  zoomLevel = value;
-                  _controller!.setZoomLevel(value);
-                });
-              },
-              divisions: (maxZoomLevel - 1).toInt() < 1
-                  ? null
-                  : (maxZoomLevel - 1).toInt(),
-            ),
-          ),
+          // _zoomControllerSlider(),
         ],
+      ),
+    );
+  }
+
+  Widget _zoomControllerSlider() {
+    return Positioned(
+      bottom: 100,
+      left: 50,
+      right: 50,
+      child: Slider(
+        value: zoomLevel,
+        min: minZoomLevel,
+        max: maxZoomLevel,
+        onChanged: (value) {
+          setState(() {
+            zoomLevel = value;
+            _controller!.setZoomLevel(value);
+          });
+        },
+        divisions:
+            (maxZoomLevel - 1).toInt() < 1 ? null : (maxZoomLevel - 1).toInt(),
       ),
     );
   }
