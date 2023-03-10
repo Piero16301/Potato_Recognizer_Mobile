@@ -17,7 +17,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   google_ml_kit: ^0.13.0
-  image_picker: ^0.8.6
+  image_picker: ^0.8.7
   intl: ^0.17.0
   path: ^1.8.2
   path_provider: ^2.0.11
