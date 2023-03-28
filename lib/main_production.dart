@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:potato_recognizer/app/app.dart';
-import 'package:potato_recognizer/bootstrap.dart';
+import 'package:potato_recognizer_mobile/app/app.dart';
+import 'package:potato_recognizer_mobile/bootstrap.dart';
 
 List<CameraDescription> cameras = [];
 

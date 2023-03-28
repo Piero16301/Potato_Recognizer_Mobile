@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potato_recognizer/home/home.dart';
-import 'package:potato_recognizer/l10n/l10n.dart';
+import 'package:potato_recognizer_mobile/home/home.dart';
+import 'package:potato_recognizer_mobile/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

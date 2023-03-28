@@ -1,6 +1,16 @@
-name: potato_recognizer
+name: potato_recognizer_mobile
 
-on: [pull_request, push]
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   semantic-pull-request:

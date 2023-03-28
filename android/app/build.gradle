@@ -49,7 +49,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.potato.recognizer.utec"
+        applicationId "com.utec.potato.recognizer"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -79,17 +79,17 @@ android {
         production {
             dimension "default"
             applicationIdSuffix ""
-            manifestPlaceholders = [appName: "Potato Recognizer"]
+            manifestPlaceholders = [appName: "Potato Recognizer Mobile"]
         }
         staging {
             dimension "default"
             applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Potato Recognizer"]
+            manifestPlaceholders = [appName: "[STG] Potato Recognizer Mobile"]
         }
         development {
             dimension "default"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Potato Recognizer"]
+            manifestPlaceholders = [appName: "[DEV] Potato Recognizer Mobile"]
         }
     }
 

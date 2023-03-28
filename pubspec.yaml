@@ -1,29 +1,29 @@
-name: potato_recognizer
+name: potato_recognizer_mobile
 description: Real-time potato recognizer for Android & iOS
 version: 1.0.0+1
 publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.3.8
+  flutter: 3.7.8
 
 dependencies:
-  bloc: ^8.1.0
-  camera: ^0.10.1
+  bloc: ^8.1.1
+  camera: ^0.10.3+2
   equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
   google_ml_kit: ^0.13.0
-  image_picker: ^0.8.6
+  image_picker: ^0.8.7
   intl: ^0.17.0
   path: ^1.8.2
-  path_provider: ^2.0.11
+  path_provider: ^2.0.14
 
 dev_dependencies:
-  bloc_test: ^9.1.0
+  bloc_test: ^9.1.1
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0

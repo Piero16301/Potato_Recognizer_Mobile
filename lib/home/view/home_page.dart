@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:potato_recognizer/home/home.dart';
+import 'package:potato_recognizer_mobile/home/home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

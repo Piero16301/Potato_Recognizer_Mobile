@@ -31,7 +31,7 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-_\*Potato Recognizer works on iOS, Android, Web, and Windows._
+_\*Potato Recognizer Mobile works on iOS, Android, Web, and Windows._
 
 ---
 
@@ -92,7 +92,7 @@ This project relies on [flutter_localizations][flutter_localizations_link] and f
 3. Use the new string
 
 ```dart
-import 'package:potato_recognizer/l10n/l10n.dart';
+import 'package:potato_recognizer_mobile/l10n/l10n.dart';
 
 @override
 Widget build(BuildContext context) {
