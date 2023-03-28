@@ -115,8 +115,8 @@ class _CameraViewState extends State<CameraView> {
         ],
       ),
       body: _body(),
-      // floatingActionButton: _floatingActionButton(),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _floatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 

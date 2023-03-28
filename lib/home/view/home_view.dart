@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
   Future<void> _initializeDetector(DetectionMode mode) async {
     debugPrint('Set detector mode to $mode');
 
-    const path = 'assets/potato_labeler.tflite';
+    const path = 'assets/object_labeler.tflite';
     final modelPath = await _getModel(path);
     final options = LocalObjectDetectorOptions(
       mode: mode,
