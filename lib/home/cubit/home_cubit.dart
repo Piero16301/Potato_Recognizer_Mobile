@@ -6,13 +6,13 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(const HomeState());
 
-  Future<void> initialLoading() async {
-    emit(state.copyWith(status: HomeStatus.loading));
+  Future<void> loadModel() async {
+    emit(state.copyWith(status: ModelStatus.loading));
     try {
-      await Future<void>.delayed(const Duration(seconds: 3));
-      emit(state.copyWith(status: HomeStatus.success));
+      await Future<void>.delayed(const Duration(seconds: 2));
+      emit(state.copyWith(status: ModelStatus.success));
     } catch (e) {
-      emit(state.copyWith(status: HomeStatus.failure));
+      emit(state.copyWith(status: ModelStatus.failure));
     }
   }
 }

@@ -1,26 +1,26 @@
 part of 'home_cubit.dart';
 
-enum HomeStatus {
+enum ModelStatus {
   initial,
   loading,
   success,
   failure;
 
-  bool get isInitial => this == HomeStatus.initial;
-  bool get isLoading => this == HomeStatus.loading;
-  bool get isSuccess => this == HomeStatus.success;
-  bool get isFailure => this == HomeStatus.failure;
+  bool get isInitial => this == ModelStatus.initial;
+  bool get isLoading => this == ModelStatus.loading;
+  bool get isSuccess => this == ModelStatus.success;
+  bool get isFailure => this == ModelStatus.failure;
 }
 
 class HomeState extends Equatable {
   const HomeState({
-    this.status = HomeStatus.initial,
+    this.status = ModelStatus.success,
   });
 
-  final HomeStatus status;
+  final ModelStatus status;
 
   HomeState copyWith({
-    HomeStatus? status,
+    ModelStatus? status,
   }) {
     return HomeState(
       status: status ?? this.status,

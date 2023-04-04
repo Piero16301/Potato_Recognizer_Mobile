@@ -1,14 +1,12 @@
-import 'package:camera/camera.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:potato_recognizer_mobile/app/app.dart';
 import 'package:potato_recognizer_mobile/bootstrap.dart';
 
-List<CameraDescription> cameras = [];
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  cameras = await availableCameras();
+  DartPluginRegistrant.ensureInitialized();
 
   await bootstrap(() => const App());
 }

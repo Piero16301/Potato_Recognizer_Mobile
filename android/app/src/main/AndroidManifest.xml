@@ -1,9 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.verygoodcore.potato_recognizer_mobile">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    
    <application
         android:label="potato_recognizer_mobile"
         android:name="${applicationName}"

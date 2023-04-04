@@ -1,11 +1,10 @@
 name: potato_recognizer_mobile
-description: Real-time potato recognizer for Android & iOS
+description: Aplicación de reconocimiento de tipos de papas con TF Lite
 version: 1.0.0+1
 publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.7.8
 
 dependencies:
   bloc: ^8.1.1
@@ -16,11 +15,8 @@ dependencies:
   flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
-  google_ml_kit: ^0.13.0
-  image_picker: ^0.8.7
+  flutter_vision: ^1.1.1
   intl: ^0.17.0
-  path: ^1.8.2
-  path_provider: ^2.0.14
 
 dev_dependencies:
   bloc_test: ^9.1.1
@@ -33,4 +29,4 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-  - assets/
+    - assets/
