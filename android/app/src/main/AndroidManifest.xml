@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.verygoodcore.potato_recognizer_mobile">
    <application
-        android:label="potato_recognizer_mobile"
+        android:label="Potato Recognizer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -64,7 +64,6 @@ unlinked_spec.ds
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
 **/android/.idea/
 *.jks
 
