@@ -73,7 +73,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Future<void> initFunction() async {
     cameras = await availableCameras();
     vision = FlutterVision();
-    controller = CameraController(cameras[0], ResolutionPreset.high);
+    controller = CameraController(cameras[0], ResolutionPreset.low);
     await controller.initialize().then((value) {
       loadYoloModel().then((value) {
         setState(() {

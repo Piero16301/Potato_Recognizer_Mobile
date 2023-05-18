@@ -5,10 +5,11 @@ publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
+  flutter: 3.10.0
 
 dependencies:
   bloc: ^8.1.1
-  camera: ^0.10.3+2
+  camera: ^0.10.5
   equatable: ^2.0.5
   flutter:
     sdk: flutter
@@ -16,10 +17,11 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_vision: ^1.1.1
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dev_dependencies:
   bloc_test: ^9.1.1
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
@@ -30,3 +32,17 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  image_path_android: "assets/images/app-logo.png"
+  ios: true
+  remove_alpha_ios: true
+  image_path_ios: "assets/images/app-logo.png"
+  web:
+    generate: false
+  windows:
+    generate: false
+  macos:
+    generate: false
