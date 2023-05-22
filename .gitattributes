@@ -1,1 +1,2 @@
 release/potato_recognizer.apk filter=lfs diff=lfs merge=lfs -text
+release/cip_detector.apk filter=lfs diff=lfs merge=lfs -text
