@@ -73,7 +73,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Future<void> initFunction() async {
     cameras = await availableCameras();
     vision = FlutterVision();
-    controller = CameraController(cameras[0], ResolutionPreset.low);
+    controller = CameraController(cameras[0], ResolutionPreset.high);
     await controller.initialize().then((value) {
       loadYoloModel().then((value) {
         setState(() {
@@ -89,7 +89,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
     await vision.loadYoloModel(
       labels: 'assets/potato-recognizer-labels.txt',
       modelPath: 'assets/potato-recognizer.tflite',
-      modelVersion: 'yolov5',
+      modelVersion: 'yolov8',
       numThreads: 2,
       useGpu: false,
     );
@@ -180,7 +180,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
 
       return Positioned(
         left: result['box'][0] * factorX as double,
-        top: result['box'][1] * factorY as double,
+        top: result['box'][1] * factorY * 0.85 as double,
         width: (result['box'][2] - result['box'][0]) * factorX as double,
         height: (result['box'][3] - result['box'][1]) * factorY as double,
         child: DecoratedBox(
@@ -253,7 +253,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Future<void> stopDetection() async {
     setState(() {
       isDetecting = false;
-      yoloResults.clear();
+      yoloResults = [];
     });
   }
 }
