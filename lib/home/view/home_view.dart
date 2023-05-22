@@ -9,40 +9,58 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const squareColors = <String, Color>{
+      'amarilla': Colors.yellow,
+      'huamantanga': Colors.brown,
+      'huayro rojo': Colors.lightBlue,
+      'peruanita': Colors.red,
+    };
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Potato Recognizer'),
+        title: const Text('CIP Detector'),
         centerTitle: true,
       ),
-      body: const YoloObjectDetector(),
+      body: Stack(
+        children: [
+          const YoloObjectDetector(),
+          Positioned(
+            top: 10,
+            right: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: squareColors.keys.map((key) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Row(
+                    children: [
+                      Text(
+                        key.toUpperCase(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Container(
+                        height: 12,
+                        width: 12,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: squareColors[key],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ),
     );
-
-    // return BlocBuilder<HomeCubit, HomeState>(
-    //   builder: (context, state) {
-    //     if (state.status.isLoading) {
-    //       return const Scaffold(
-    //         body: Center(
-    //           child: CircularProgressIndicator(),
-    //         ),
-    //       );
-    //     } else if (state.status.isFailure) {
-    //       return const Scaffold(
-    //         body: Center(
-    //           child: Text('No se pudo cargar el modelo'),
-    //         ),
-    //       );
-    //     } else if (state.status.isSuccess) {
-    //       Scaffold(
-    //         appBar: AppBar(
-    //           title: const Text('Potato Recognizer'),
-    //           centerTitle: true,
-    //         ),
-    //         body: const YoloObjectDetector(),
-    //       );
-    //     }
-    //     return const SizedBox.shrink();
-    //   },
-    // );
   }
 }
 
@@ -117,6 +135,10 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
       );
     }
 
+    if (!isDetecting) {
+      yoloResults.clear();
+    }
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -172,46 +194,38 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
     final factorX = screen.width / (cameraImage?.height ?? 1);
     final factorY = screen.height / (cameraImage?.width ?? 1);
 
-    const colorPick = Color.fromARGB(255, 50, 233, 30);
+    const squareColors = <String, Color>{
+      'amarilla': Colors.yellow,
+      'huamantanga': Colors.brown,
+      'huayro rojo': Colors.lightBlue,
+      'peruanita': Colors.red,
+    };
 
     return yoloResults.map((result) {
-      final tag = result['tag'].toString().toUpperCase();
+      final tag = result['tag'].toString();
       final score = (result['box'][4] * 100 as double).toStringAsFixed(2);
+      final currentColor = squareColors[tag] ?? Colors.white;
 
       return Positioned(
         left: result['box'][0] * factorX as double,
-        top: result['box'][1] * factorY * 0.85 as double,
+        top: result['box'][1] * factorY * 0.87 as double,
         width: (result['box'][2] - result['box'][0]) * factorX as double,
         height: (result['box'][3] - result['box'][1]) * factorY as double,
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
-            border: Border.all(color: colorPick, width: 2),
+            border: Border.all(color: currentColor, width: 2),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 7.5),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  tag,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Text(
-                  '$score%',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
+            child: Text(
+              '$score%',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         ),
@@ -253,7 +267,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Future<void> stopDetection() async {
     setState(() {
       isDetecting = false;
-      yoloResults = [];
+      yoloResults.clear();
     });
   }
 }
