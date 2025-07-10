@@ -21,7 +21,7 @@ jobs:
   spell-check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
     with:
-      min_coverage: 1
       includes: |
         **/*.md
       modified_files_only: false
+      min_coverage: 1
