@@ -5,27 +5,26 @@ publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.10.1
 
 dependencies:
-  bloc: ^8.1.4
-  camera: ^0.11.0+1
-  equatable: ^2.0.5
+  bloc: ^9.0.0
+  camera: ^0.11.2
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
   flutter_vision: ^1.1.4
-  intl: ^0.19.0
+  intl: ^0.20.2
 
 dev_dependencies:
-  bloc_test: ^9.1.7
-  flutter_launcher_icons: ^0.13.1
+  bloc_test: ^10.0.0
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  very_good_analysis: ^5.1.0
+  very_good_analysis: ^9.0.0
 
 flutter:
   uses-material-design: true
@@ -35,14 +34,9 @@ flutter:
     - assets/images/
 
 flutter_launcher_icons:
-  android: true
-  image_path_android: "assets/images/app-logo.png"
+  image_path: "assets/images/app_logo.png"
+  android: "app_logo"
+  image_path_android: "assets/images/app_logo.png"
   ios: true
   remove_alpha_ios: true
-  image_path_ios: "assets/images/app-logo.png"
-  web:
-    generate: false
-  windows:
-    generate: false
-  macos:
-    generate: false
+  image_path_ios: "assets/images/app_logo.png"

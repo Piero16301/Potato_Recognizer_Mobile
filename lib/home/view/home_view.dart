@@ -91,7 +91,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Future<void> initFunction() async {
     cameras = await availableCameras();
     vision = FlutterVision();
-    controller = CameraController(cameras[0], ResolutionPreset.high);
+    controller = CameraController(cameras.first, ResolutionPreset.medium);
     await controller.initialize().then((value) {
       loadYoloModel().then((value) {
         setState(() {
@@ -249,18 +249,22 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   }
 
   Future<void> yoloOnFrame(CameraImage cameraImage) async {
-    final result = await vision.yoloOnFrame(
-      bytesList: cameraImage.planes.map((plane) => plane.bytes).toList(),
-      imageHeight: cameraImage.height,
-      imageWidth: cameraImage.width,
-      iouThreshold: 0.4,
-      confThreshold: 0.4,
-      classThreshold: 0.5,
-    );
-    if (result.isNotEmpty) {
-      setState(() {
-        yoloResults = result;
-      });
+    try {
+      final result = await vision.yoloOnFrame(
+        bytesList: cameraImage.planes.map((plane) => plane.bytes).toList(),
+        imageHeight: cameraImage.height,
+        imageWidth: cameraImage.width,
+        iouThreshold: 0.4,
+        confThreshold: 0.4,
+        classThreshold: 0.5,
+      );
+      if (result.isNotEmpty) {
+        setState(() {
+          yoloResults = result;
+        });
+      }
+    } catch (e) {
+      debugPrint('Error during YOLO detection: $e');
     }
   }
 

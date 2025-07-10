@@ -1,13 +1,12 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.verygoodcore.potato_recognizer_mobile">
-   <application
-        android:label="CIP Detector"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="${appName}"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/app_logo">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
