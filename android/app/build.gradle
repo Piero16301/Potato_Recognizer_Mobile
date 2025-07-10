@@ -30,8 +30,8 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.utec.potato.recognizer"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion = "26.1.10909125"
+    compileSdkVersion 35
+    ndkVersion = "27.0.12077973"
 
     aaptOptions {
         noCompress 'tflite'
@@ -39,12 +39,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_11
     }
 
     sourceSets {
@@ -56,10 +56,10 @@ android {
         applicationId "com.utec.potato.recognizer"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        minSdkVersion 21
+        targetSdkVersion 35
+        versionCode 4
+        versionName "3.0.0"
     }
 
     signingConfigs {
@@ -85,17 +85,17 @@ android {
         production {
             dimension "default"
             applicationIdSuffix ""
-            manifestPlaceholders = [appName: "Potato Recognizer Mobile"]
+            manifestPlaceholders = [appName: "CIP Detector"]
         }
         staging {
             dimension "default"
             applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Potato Recognizer Mobile"]
+            manifestPlaceholders = [appName: "[STG] CIP Detector"]
         }
         development {
             dimension "default"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Potato Recognizer Mobile"]
+            manifestPlaceholders = [appName: "[DEV] CIP Detector"]
         }
     }
 
@@ -116,5 +116,5 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.20"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0"
 }

@@ -72,10 +72,10 @@ class YoloObjectDetector extends StatefulWidget {
 }
 
 class _YoloObjectDetectorState extends State<YoloObjectDetector> {
-  late CameraController controller;
+  CameraController? controller;
   late FlutterVision vision;
-  late List<Map<String, dynamic>> yoloResults;
-  late List<CameraDescription> cameras;
+  List<Map<String, dynamic>> yoloResults = [];
+  List<CameraDescription> cameras = [];
 
   CameraImage? cameraImage;
   bool isLoaded = false;
@@ -84,15 +84,14 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   @override
   void initState() {
     super.initState();
-
+    vision = FlutterVision();
     initFunction();
   }
 
   Future<void> initFunction() async {
     cameras = await availableCameras();
-    vision = FlutterVision();
     controller = CameraController(cameras.first, ResolutionPreset.medium);
-    await controller.initialize().then((value) {
+    await controller!.initialize().then((value) {
       loadYoloModel().then((value) {
         setState(() {
           isLoaded = true;
@@ -109,7 +108,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
       modelPath: 'assets/potato-recognizer.tflite',
       modelVersion: 'yolov8',
       numThreads: 2,
-      useGpu: false,
+      useGpu: true,
     );
     setState(() {
       isLoaded = true;
@@ -119,7 +118,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   @override
   Future<void> dispose() async {
     super.dispose();
-    await controller.dispose();
+    await controller?.dispose();
     await vision.closeYoloModel();
   }
 
@@ -127,10 +126,10 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    if (!isLoaded) {
+    if (!isLoaded || controller == null) {
       return const Scaffold(
         body: Center(
-          child: Text('Modelo no cargado'),
+          child: Text('Cargando modelo de detección...'),
         ),
       );
     }
@@ -143,9 +142,9 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
       fit: StackFit.expand,
       children: [
         AspectRatio(
-          aspectRatio: controller.value.aspectRatio,
+          aspectRatio: controller!.value.aspectRatio,
           child: CameraPreview(
-            controller,
+            controller!,
           ),
         ),
         ...displayBoxesAroundRecognizedObjects(size),
@@ -237,10 +236,10 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
     setState(() {
       isDetecting = true;
     });
-    if (controller.value.isStreamingImages) {
+    if (controller?.value.isStreamingImages ?? false) {
       return;
     }
-    await controller.startImageStream((image) async {
+    await controller?.startImageStream((image) async {
       if (isDetecting) {
         cameraImage = image;
         await yoloOnFrame(image);
