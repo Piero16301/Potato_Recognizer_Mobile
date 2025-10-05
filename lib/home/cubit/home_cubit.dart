@@ -11,7 +11,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       await Future<void>.delayed(const Duration(seconds: 2));
       emit(state.copyWith(status: ModelStatus.success));
-    } catch (e) {
+    } on Exception {
       emit(state.copyWith(status: ModelStatus.failure));
     }
   }

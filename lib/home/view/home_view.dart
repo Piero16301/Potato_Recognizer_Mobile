@@ -1,4 +1,6 @@
-// ignore_for_file: avoid_dynamic_calls
+// ignore_for_file: avoid_dynamic_calls // For simplicity in handling dynamic types from the model output
+
+import 'dart:async';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
@@ -85,20 +87,22 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
   void initState() {
     super.initState();
     vision = FlutterVision();
-    initFunction();
+    unawaited(initFunction());
   }
 
   Future<void> initFunction() async {
     cameras = await availableCameras();
     controller = CameraController(cameras.first, ResolutionPreset.medium);
     await controller!.initialize().then((value) {
-      loadYoloModel().then((value) {
-        setState(() {
-          isLoaded = true;
-          isDetecting = false;
-          yoloResults = [];
-        });
-      });
+      unawaited(
+        loadYoloModel().then((value) {
+          setState(() {
+            isLoaded = true;
+            isDetecting = false;
+            yoloResults = [];
+          });
+        }),
+      );
     });
   }
 
@@ -262,7 +266,7 @@ class _YoloObjectDetectorState extends State<YoloObjectDetector> {
           yoloResults = result;
         });
       }
-    } catch (e) {
+    } on Exception catch (e) {
       debugPrint('Error during YOLO detection: $e');
     }
   }

@@ -1,13 +1,14 @@
 name: potato_recognizer_mobile
-description: Aplicación de reconocimiento de tipos de papas con TF Lite
+description: Aplicación de reconocimiento de tipos de papas con TF Lite.
 version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ^3.9.0
+  flutter: ^3.35.0
 
 dependencies:
-  bloc: ^9.0.0
+  bloc: ^9.0.1
   camera: ^0.11.2
   equatable: ^2.0.7
   flutter:
@@ -15,7 +16,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  flutter_vision: ^1.1.4
+  flutter_vision:
+    path: packages/flutter_vision
   intl: ^0.20.2
 
 dev_dependencies:
@@ -24,7 +26,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  very_good_analysis: ^9.0.0
+  very_good_analysis: ^10.0.0
 
 flutter:
   uses-material-design: true
@@ -34,9 +36,9 @@ flutter:
     - assets/images/
 
 flutter_launcher_icons:
-  image_path: "assets/images/app_logo.png"
+  image_path: "assets/images/app-logo.png"
   android: "app_logo"
-  image_path_android: "assets/images/app_logo.png"
+  image_path_android: "assets/images/app-logo.png"
   ios: true
   remove_alpha_ios: true
-  image_path_ios: "assets/images/app_logo.png"
+  image_path_ios: "assets/images/app-logo.png"
