@@ -49,8 +49,8 @@ android {
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 28
         targetSdk = 36
-        versionCode = 5
-        versionName = "4.0.0"
+        versionCode = 7
+        versionName = "4.0.2"
 
         // Configuración para tamaño de página de 16KB
         ndk {
